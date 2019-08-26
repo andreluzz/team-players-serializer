@@ -3,7 +3,7 @@
 ## Options:
 - **endpoint**: Defines the API endpoint to retrieve the data.
 - **teams**: file path to the json array with the teams.
-- __max-api-team-index__: Defines the maximum team_id value to seek for teams. Default value: 500
+- **max-api-team-index**: Defines the maximum team_id value to seek for teams. Default value: 500
 - **max-concurrency**: Defines the max number of concurrency API request. Default value: 5
 
 ## Executing the code:

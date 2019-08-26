@@ -6,13 +6,15 @@ import (
 	"net/http"
 )
 
-// teamResponse store the content frem the onefootball team api response
+// teamResponse store the content from the onefootball team api response
 type teamResponse struct {
 	Data struct {
 		Team team `json:"team"`
 	} `json:"data"`
 }
 
+// Defines a team with all players
+// Index is the team_id in the API that matchs with this team
 type team struct {
 	Index   int
 	Name    string    `json:"name"`

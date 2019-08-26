@@ -17,8 +17,7 @@ func (p *player) ToString() string {
 	return fmt.Sprintf("%s; %s; %s\n", p.Name, p.Age, strings.Join(p.Teams, ", "))
 }
 
-// ByName implements sort.Interface for []player based on
-// the Name field.
+// ByName implements sort.Interface for []player based on the Name field
 type ByName []player
 
 func (p ByName) Len() int           { return len(p) }

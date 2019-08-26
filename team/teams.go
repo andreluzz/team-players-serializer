@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Teams define a list of teams and a builder with the players ordered
+// Teams define the list of teams processed, the builder with the players data and an errors array
 type Teams struct {
 	list    map[string]*team
 	Builder strings.Builder
@@ -29,10 +29,12 @@ func (teams *Teams) GetData(teamNames []string, apiEndpoint string, maxConcurren
 	indexesToProcess := make(chan int, maxAPIIndex)
 	results := make(chan *team, maxConcurrency)
 
+	// Start new goroutines based on the defined number of max concurrency request
 	for w := 1; w <= maxConcurrency; w++ {
 		go worker(apiEndpoint, indexesToProcess, results, done)
 	}
 
+	// Initiate the channel with maximum index to check for team data
 	for i := 1; i <= maxAPIIndex; i++ {
 		indexesToProcess <- i
 	}
@@ -48,7 +50,6 @@ func (teams *Teams) GetData(teamNames []string, apiEndpoint string, maxConcurren
 				processedTeams++
 				fmt.Print(processedTeams)
 			}
-			//fmt.Printf("Total: %d | Teams: %d", totalIndexloaded, processedTeams)
 			if processedTeams == len(teamNames) || totalIndexloaded == maxAPIIndex {
 				done <- true
 				teams.process()
@@ -58,6 +59,7 @@ func (teams *Teams) GetData(teamNames []string, apiEndpoint string, maxConcurren
 	}
 }
 
+// worker responsable for sending api requests to process team_id index
 func worker(apiEndpoint string, indexes <-chan int, results chan<- *team, done <-chan bool) {
 	for {
 		select {

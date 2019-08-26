@@ -16,7 +16,7 @@ var (
 	teamsAPIEndpoint = flag.String("endpoint", "https://vintagemonster.onefootball.com/api/teams/en", "API endpoint")
 	filePath         = flag.String("teams", "teams.json", "Path to the json file with the teams name array.")
 	maxAPITeamsIndex = flag.Int("max-api-team-index", 500, "Defines the max index to try to find a team on the API.")
-	maxConcurrency   = flag.Int("max-concurrency", 5, "Defines the max number of concurrency API request.")
+	maxConcurrency   = flag.Int("max-concurrency", 5, "Defines the max number of concurrency API requests.")
 )
 
 func main() {
@@ -37,12 +37,12 @@ func main() {
 	teams := team.Teams{}
 	teams.GetData(teamsList, *teamsAPIEndpoint, *maxConcurrency, *maxAPITeamsIndex)
 
-	fmt.Println("")
+	fmt.Printf("\n\n")
 	fmt.Println(teams.Builder.String())
 	if len(teams.Errors) > 0 {
 		fmt.Println("Errors:")
 		fmt.Println(strings.Join(teams.Errors, "\n"))
-		fmt.Println("")
+		fmt.Printf("\n")
 	}
 
 	elapsed := time.Since(start)

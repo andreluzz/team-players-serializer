@@ -6,10 +6,10 @@
 - max-api-team-index: Defines the maximum team_id value to seek for teams. Default value: 500
 - max-concurrency: Defines the max number of concurrency API request. Default value: 5
 
-## How execute:
-> go get github.com/stretchr/testify/assert
-> go build
-> ./team-players-serializer
+## Executing the code:
+1. > go get github.com/stretchr/testify/assert
+2. > go build
+3. > ./team-players-serializer
 
 ### Observations:
 1. Lib github.com/stretchr/testify/assert was used to simplify test assetions

@@ -7,9 +7,11 @@
 - max-concurrency: Defines the max number of concurrency API request. Default value: 5
 
 ## Executing the code:
-1. > go get github.com/stretchr/testify/assert
-2. > go build
-3. > ./team-players-serializer
+```
+go get github.com/stretchr/testify/assert
+go build
+./team-players-serializer
+```
 
 ### Observations:
 1. Lib github.com/stretchr/testify/assert was used to simplify test assetions
